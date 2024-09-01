@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-Console.WriteLine("Hello, World!");
+
 /* Take in user input, number of course, and grades earned each             */
 MainClass.Main();
 
@@ -24,17 +24,12 @@ class MainClass
        
     }
 
-    public void convertLetterGradeIntoPointGrade(string arg1)
+   
+
+    public void yourGPAfromGrades(string [] course_grade)
     {
-        if(arg1 == "B")
-        {
-             Console.WriteLine("Your GPA for Clas: "+ (3.0));
-        }
-        
-        if(arg1 == "A")
-        {
-             Console.WriteLine((4.0));
-        }
+
+
 
 
     }
@@ -46,58 +41,57 @@ class MainClass
         int course_taken = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("You have taken "+ course_taken + " course");
         MainClass obj = new MainClass();
-        string course_name;
-        string course_string_grade;
+        string ?course_name;
+        string ?course_string_grade;
         //string[] course = new string[course_taken];
-        string[] course = new string[10];
+        string[] course= new string[10];
         string [] course_grade  = new string[10];
+        float [] course_int_grade = new float[10];
 
         for(int i = 0; i < course_taken; i++)
         {
-           
+            
             Console.Write($"Enter the name for course: ");
             course_name = Console.ReadLine();
-            course[i] = course_name;
+            course[i] = course_name ?? "Empty Course Name";
 
-            Console.Write("Enter the grade for course: \n");
+            Console.Write("Enter the grade for course: ");
             course_string_grade = Console.ReadLine();
-            course_grade[i] = course_string_grade;
+            course_grade[i] = course_string_grade ?? "E";
             
 
             Console.Write($"Whats the name of course no: {i+1} = {course[i]} \n");
-            obj.convertLetterGradeIntoPointGrade(course_grade[i]);
-           
- 
-
-
+            course_int_grade[i] = obj.convertLetterGradeIntoPointGrade(course_grade[i]);
 
         } 
-        Console.Write($"Here the name {course[0]} for {course_taken} ");
-        //obj.inputCourseNameAndGrade(,"B");
-        obj.convertLetterGradeIntoPointGrade("A");
-        //bool ValidString = true;
-        //inputCourseNameAndGrade myObj = new inputCourseNameAndGrade("A","B");
-        //inputCourseNameAndGrade("A","B");
-        /* for(int i = 0, i < course_taken; i++)
-        {
-            Dictionary<int,string> My_dict1 = new Dictionary<int,string>();
-            My_dict1.Add()
-        } */
-        /* while(ValidString)
-        {
-            if(course_taken != course_taken)
-            {
-                Console.Write($"Enter the grade for course: {course_taken} ");
-                string course_grade = Console.ReadLine();
-                course_taken -= 1;
-            }
-            else
-            {
-                ValidString = false;
-            }
-            
+        Console.WriteLine(course[1]);
 
-        } */
+        for(int j= 0; j<course_taken; j++)
+        {
+            Console.WriteLine(course_int_grade[j]);
+        }
+       
+    }
+
+     public float convertLetterGradeIntoPointGrade(string arg1)
+    {
+        float arg2 = 1.0F;
+        if(arg1 == "B")
+        {
+            Console.WriteLine("Your GPA for Class: "+ (3.0));
+            arg2 = 3.0F;
+            
+            
+        }
+        
+        if(arg1 == "A")
+        {
+             Console.WriteLine("Your GPA for Class: "+ (4.0));
+            arg2 = 4.0F;
+        }
+        return arg2;
+
+
     }
 
     
