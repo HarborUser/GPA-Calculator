@@ -26,8 +26,17 @@ class MainClass
 
    
 
-    public void yourGPAfromGrades(string [] course_grade)
+    public void yourGPAfromGrades(float [] course_grade)
     {
+        float final_grade = new float();
+        for(int i = 0; i < 2;i++)
+        {
+            course_grade[i] = course_grade[i]*3;
+            final_grade += course_grade[i];
+
+        }
+        Console.WriteLine(final_grade/6);
+        
 
 
 
@@ -70,6 +79,7 @@ class MainClass
         {
             Console.WriteLine(course_int_grade[j]);
         }
+        obj.yourGPAfromGrades(course_int_grade);
        
     }
 
